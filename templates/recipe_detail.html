@@ -1,24 +1,17 @@
-<html lang="en-US">
-<head>
-    <title>Recipe Book</title>
-</head>
-<body>
-    <h1>
-        Recipe Book
-    </h1>
-    <h2>
-        {{ name }}
-    </h2>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Recipe Book{% endblock %}
+{% block heading %} {% endblock %}
+{% block content %}
+    <h2>List of Recipes</h2>
+    <h3> {{ recipe.name }} </h3>
+    <h4> Made by {{ recipe.author }} </h4>
 
     <p>
         {% for ingredient in recipe.ingredients.all %}
-        <li>{{ ingredient.quantity }} {{ ingredient.ingredient.name }}</li>
-        {% endfor %}
+        <li>{{ ingredient.quantity }} - {{ ingredient.ingredient.name }}</li>
+            {% endfor %}
     </p>
-    
-    <a href ='/recipes/list'>
-        Back to Recipe Book
-    </a>
 
-</body>
-</html>
+    <a href="/recipes/list">Back to Recipe Book</a>
+{% endblock content %}
