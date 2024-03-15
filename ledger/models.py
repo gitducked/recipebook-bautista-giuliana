@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from django.urls import reverse
 
@@ -15,6 +16,9 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length = 100)
+    author = models.CharField(max_length = 50)
+    created_on = models.DateField(null = False, auto_now_add = True) # https://docs.djangoproject.com/en/5.0/ref/models/fields/
+    update_on = models.DateField(null = False, auto_now = True)
 
     def __str__(self):
         return self.name
